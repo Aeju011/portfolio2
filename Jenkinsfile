@@ -22,11 +22,11 @@ pipeline {
       }
     }
 
-   stage('Deploy') {
-steps {
-bat 'robocopy "%WORKSPACE%" "C:\inetpub\wwwroot" index.html about.html /NFL /NDL /NJH /NJS /MT:8'
-}
-}
+stage('Deploy to IIS (localhost)') {
+      steps {
+        // Run PowerShell directly (no cmd/caret issues). Use forward slashes in paths to avoid Groovy escaping problems.
+        powershell script: '''
+Write-Output "=== Deploy to IIS: Starting ==="
 
 # Use forward slashes inside the script to avoid Groovy/backslash parsing problems
 $deployDir = 'C:/inetpub/wwwroot'

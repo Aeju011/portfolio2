@@ -3,7 +3,7 @@ pipeline {
 
   environment {
     DEPLOY_DIR = 'C:\\inetpub\\wwwroot' // still fine for Groovy env usage
-    GIT_CREDS  = 'github-khan'
+    GIT_CREDS  = 'github-aejaz'
   }
 
   stages {
@@ -22,7 +22,7 @@ pipeline {
       }
     }
 
-stage('Deploy to IIS (localhost)') {
+    stage('Deploy to IIS (localhost)') {
       steps {
         // Run PowerShell directly (no cmd/caret issues). Use forward slashes in paths to avoid Groovy escaping problems.
         powershell script: '''
